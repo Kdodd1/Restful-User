@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit User</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Edit User #{{user.id}}</h1>
+		<form action="/{{user.id}}/update" method="POST">
+			{% csrf_token %}
+		  <div class="form-group">
+		    <label for="formGroupExampleInput">First Name: </label>
+		    <input type="text" class="form-control" name="first_name" id="formGroupExampleInput" placeholder="{{user.first_name}} ">
+		  </div>
+		  <div class="form-group">
+		    <label for="formGroupExampleInput2">Last Name: </label>
+		    <input type="text" class="form-control" name="last_name" id="formGroupExampleInput2" placeholder="{{user.last_name}} ">
+		  </div>
+		  <div class="form-group">
+		    <label for="formGroupExampleInput2">Email: </label>
+		    <input type="text" class="form-control" name="email" id="formGroupExampleInput2" placeholder="{{user.email}}">
+		  </div>
+		  	{% if messages %}
+	    		{% for message in messages %}
+	    		<p class="message">{{message}}</p>
+	    		{% endfor %}
+	   	 	{% endif %}
+		  <button type="submit" class="btn btn-primary">Update</button>
+		</form>
+		<a href="/users" >Back</a>
+
+	</div>
+</body>
+</html>
